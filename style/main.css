@@ -1,0 +1,415 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --btnsTransition: all .2s linear;
+    --lightBtnColor: rgba(255, 255, 255, 0.58);
+    --heavyBtnColor: rgb(255, 255, 255);
+    --btnTransform: scale(1.1);
+}
+
+body {
+    background: url("../img/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: Quicksand, sans-serif;
+    overflow-x: hidden;
+}
+
+body::after {
+    position: fixed;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.582);
+    z-index: -1;
+}
+
+
+/*Add New Column*/
+
+.add-column-btn {
+    color: var(--lightBtnColor);
+    position: fixed;
+    top: 50px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 27px;
+    transition: var(--btnsTransition);
+    cursor: pointer;
+    z-index: 3;
+}
+
+.add-column-btn .fa-plus-circle {
+    font-size: 2.5rem;
+}
+
+.add-column-btn:hover {
+    background-color: rgba(255, 255, 255, 0.945);
+    color: rgba(0, 0, 0, 0.945);
+}
+
+.add-column-btn span {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 7px 17px 7px 10px
+}
+
+
+/*Add New Column Overlay*/
+
+.add-column {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.87);
+    z-index: 3;
+}
+
+.add-column>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+}
+
+.add-column label {
+    font-size: 1.2rem;
+}
+
+.add-column button {
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    background-color: #3498db;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.add-column button:focus {
+    outline: none;
+}
+
+.add-column .heading {
+    width: 100%;
+    height: 5vh;
+    line-height: 1.5rem;
+    font-size: 1.5rem;
+    padding: 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+}
+
+.add-column .heading:focus {
+    outline: none;
+}
+
+
+/*Content*/
+
+.main-title {
+    margin: 50px auto;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.drag-container {
+    margin: 0 20px 50px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.drag-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 2%;
+    row-gap: 2%;
+    align-items: start;
+}
+
+
+/* Columns */
+
+.drag-column {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    overflow-x: hidden;
+}
+
+.drag-column .fa-trash-alt {
+    top: 15px;
+    right: 15px;
+    font-size: .95em;
+}
+
+
+/* Custom Scrollbar */
+
+.custom-scroll {
+    overflow-y: auto;
+    max-height: 40vh;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-right: 5px;
+}
+
+.custom-scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 10px 10px 0
+}
+
+.header h2 {
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    text-shadow: 2px 1px 5px rgb(49, 49, 49);
+    padding: 10px;
+}
+
+
+/* Drag and Drop */
+
+.drag-item-list {
+    overflow-x: hidden;
+    min-height: 40vh;
+    padding: 10px;
+}
+
+.drag-item {
+    position: relative;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    margin: 0 0 10px;
+    padding: 10px 30px 10px 16px;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 25px;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+    cursor: grab;
+    z-index: 2;
+}
+
+.drag-item:focus {
+    outline: none;
+}
+
+.drag-item .fa-times {
+    top: 15px;
+    right: 15px;
+}
+
+.add-btn {
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    margin: 3%;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 94%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.add-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+}
+
+.add-btn:active {
+    transform: scale(0.97);
+}
+
+.fa-plus {
+    font-size: .9rem;
+    margin-right: 8px;
+}
+
+
+/*Edit and Add new item*/
+
+.edit-container,
+.add-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.87);
+    z-index: 3;
+}
+
+.edit-item,
+.add-item {
+    border-radius: 10px;
+    margin: 10px auto;
+    color: black;
+    width: 40vw;
+}
+
+.edit-item:focus,
+.add-item:focus {
+    outline: none;
+}
+
+.edit-item textarea,
+.add-item textarea {
+    height: 260px;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    border: none;
+}
+
+.edit-item textarea:focus,
+.add-item textarea:focus {
+    outline: none;
+}
+
+.edit-item .edit-btn,
+.add-item .save-btn {
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    padding: 10px 15px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.edit-item .edit-btn:hover,
+.add-item .save-btn:hover {
+    background-color: rgba(255, 255, 255, 0.61);
+}
+
+
+/* In common styling */
+
+.edit-container .fa-times,
+.add-container .fa-times,
+.add-column .fa-times {
+    top: 8vh;
+    left: 8vw;
+    font-size: 2em;
+}
+
+.add-column .fa-times,
+.add-container .fa-times,
+.edit-container .fa-times,
+.drag-column .fa-trash-alt,
+.drag-item .fa-times {
+    position: absolute;
+    color: var(--lightBtnColor);
+    cursor: pointer;
+    transition: all .2s linear;
+}
+
+.add-column .fa-times:hover,
+.add-container .fa-times:hover,
+.edit-container .fa-times:hover,
+.drag-column .fa-trash-alt:hover,
+.drag-item .fa-times:hover {
+    color: var(--heavyBtnColor);
+    transform: var(--btnsTransition);
+}
+
+
+/* Media query styling */
+
+@media screen and (max-width:1100px) {
+    .drag-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .add-column>div {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /* Media Query: Mediam Screens */
+    .drag-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .add-column-btn span {
+        display: none;
+    }
+    .add-column-btn .fa-plus-circle {
+        font-size: 3rem;
+    }
+    .edit-item,
+    .add-item {
+        width: 60vw;
+    }
+}
+
+
+/* Media Query: Large Smartphone (Vertical) */
+
+@media screen and (max-width: 600px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    .drag-container {
+        margin: 10px;
+    }
+    .drag-list {
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 0;
+    }
+    .drag-column {
+        margin: 10px;
+    }
+    /*Add new item container*/
+    .edit-item,
+    .add-item {
+        width: 90vw;
+    }
+    .add-column>div {
+        width: 90vw;
+    }
+}

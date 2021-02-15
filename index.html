@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/MB.png">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Orderli</title>
+</head>
+
+<body>
+
+    <div class="add-column-btn" id="add-column-btn">
+        <i class="fas fa-plus-circle"></i>
+        <span>New Column</span>
+    </div>
+    <div class="add-column" id="add-column">
+        <div>
+            <i class="fas fa-times" id="close-column"></i>
+            <label for="heading">Title</label>
+            <input type="text" class="heading" id="heading" autocomplete="off">
+            <button id="save-column">Save</button>
+        </div>
+    </div>
+
+    <h1 class="main-title">Orderli Board</h1>
+    <div class="drag-container">
+        <ul class="drag-list">
+
+        </ul>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
