@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+@font-face {
+    font-family: mainTitle;
+    src: url(../fonts/KrinkesDecorPersonalUse-MmpP.ttf);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -128,7 +133,10 @@ body::after {
 .main-title {
     margin: 50px auto;
     text-align: center;
-    font-size: 2.5rem;
+    font-family: mainTitle;
+    font-size: 4rem;
+    font-weight: 100;
+    letter-spacing: 5px;
 }
 
 .drag-container {
